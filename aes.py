@@ -3,6 +3,8 @@ from Crypto.Cipher import AES
 
 def acceptKey():
     key_string = input("Enter key of 16 characters:")
+    if len(key_string)!=16:
+        raise Exception("Key length not 16")
     key = bytes(key_string, 'utf-8')
     #print(key)
     return key
