@@ -9,13 +9,10 @@ def acceptKey():
     #print(key)
     return key
 
-#mahika
-# key= b'C&F)H@McQfTjWnZr'
-def encryptText(key):
-    #key = acceptKey()
+
+def encryptText(key,data):
     cipher = AES.new(key,AES.MODE_EAX)
     nonce = cipher.nonce
-    data = "hi this needs to be encrypted".encode()
     ciphertext = cipher.encrypt(data)
     #print("Ciphertext:",ciphertext)
     return ciphertext,nonce
@@ -28,9 +25,9 @@ def decrypt(key,ciphertext,nonce):
     #print("Plaintext:",plaintext)
     return plaintext
     
-
+data = "hi this needs to be encrypted".encode()
 key = acceptKey()
-ct,nonce = encryptText(key)
+ct,nonce = encryptText(key,data)
 pt = decrypt(key,ct,nonce)
 print("Encrypted text:", ct)
 print("Decrypted text:", pt)
