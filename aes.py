@@ -1,6 +1,5 @@
 from Crypto.Cipher import AES
 
-
 def acceptKey():
     key_string = input("Enter key of 16 characters:")
     if len(key_string)!=16:
@@ -8,7 +7,6 @@ def acceptKey():
     key = bytes(key_string, 'utf-8')
     #print(key)
     return key
-
 
 def encryptText(key,data):
     cipher = AES.new(key,AES.MODE_EAX)
@@ -25,7 +23,8 @@ def decrypt(key,ciphertext,nonce):
     #print("Plaintext:",plaintext)
     return plaintext
     
-data = "hi this needs to be encrypted".encode()
+#data = "hi this needs to be encrypted".encode()
+data = input("Enter diary entry:").encode()
 key = acceptKey()
 ct,nonce = encryptText(key,data)
 pt = decrypt(key,ct,nonce)
